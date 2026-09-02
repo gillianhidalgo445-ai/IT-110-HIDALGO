@@ -1,6 +1,6 @@
 # IT-110-HIDALGO
 
-Personal repository for IT 110 (Web Development Fundamentals) — 2nd Semester, SY 2026-2027.
+Personal repository for IT 110 (Web Development Fundamentals) — 1st Semester, SY 2026-2027.
 
 **Student:** Gillian Hidalgo
 **Instructor:** Dexter Romaguera
