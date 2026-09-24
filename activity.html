@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Activity 2 - Gillian Hidalgo</title>
+</head>
+<body>
+
+    <header id="main-header">
+        <h1 id="main-heading">HTML Practical Application Activity</h1>
+        <p>Images, Hyperlinks, Multimedia, Useful Tags, and the HTML DOM</p>
+        <nav>
+            <a href="#images-section">Images</a> |
+            <a href="#hyperlinks-section">Hyperlinks</a> |
+            <a href="#multimedia-section">Multimedia</a> |
+            <a href="#tags-section">Useful Tags</a> |
+            <a href="#dom-section">HTML DOM</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- ============================= -->
+    <!-- 1. IMAGES SECTION -->
+    <!-- ============================= -->
+    <section id="images-section">
+        <h2>Images</h2>
+
+        <p>Below are three images demonstrating proper use of the &lt;img&gt; tag with descriptive alt text.</p>
+
+        <img src="images/photo1.jpg" alt="First sample image demonstrating the img tag" width="300">
+
+        <img src="images/photo2.jpeg" alt="Second sample image demonstrating alt text and sizing" width="300" height="200">
+
+        <figure>
+            <img src="images/photo3.webp" alt="Boracay beach travel guide cover image" width="300">
+            <figcaption>A scenic beach photo used to demonstrate the figure and figcaption tags.</figcaption>
+        </figure>
+
+    </section>
+
+    <hr>
+
+    <!-- ============================= -->
+    <!-- 2. HYPERLINKS SECTION -->
+    <!-- ============================= -->
+    <section id="hyperlinks-section">
+        <h2>Hyperlinks</h2>
+
+        <p>
+            Internal link: Jump to the
+            <a href="#multimedia-section">Multimedia section</a> of this same page.
+        </p>
+
+        <p>
+            External link: Visit
+            <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">Wikipedia's HTML article</a>
+            (opens in a new tab).
+        </p>
+
+        <p>
+            Email link:
+            <a href="mailto:gillian.hidalgo@carsu.edu.ph">Send me an email</a>.
+        </p>
+
+        <p>
+            Same-page anchor link: Jump directly to the
+            <a href="#tags-section">Useful Tags section</a> using an anchor link.
+        </p>
+
+    </section>
+
+    <hr>
+
+    <!-- ============================= -->
+    <!-- 3. MULTIMEDIA SECTION -->
+    <!-- ============================= -->
+    <section id="multimedia-section">
+        <h2>Multimedia</h2>
+
+        <h3>Audio</h3>
+        <audio controls>
+            <source src="media/myaudio.mp3" type="audio/mpeg">
+            Your browser does not support the audio element. Here is a
+            <a href="media/myaudio.mp3">link to download the audio</a> instead.
+        </audio>
+
+        <h3>Video</h3>
+        <video controls width="400">
+            <source src="media/myvideo.mp4" type="video/mp4">
+            Your browser does not support the video element. Here is a
+            <a href="media/myvideo.mp4">link to download the video</a> instead.
+        </video>
+
+    </section>
+
+    <hr>
+
+    <!-- ============================= -->
+    <!-- 4. USEFUL TAGS SECTION -->
+    <!-- ============================= -->
+    <section id="tags-section">
+        <h2>Useful Tags</h2>
+
+        <!-- Used blockquote to properly cite a quoted definition instead of just placing it in a plain paragraph -->
+        <blockquote>
+            "HTML is the standard markup language for creating and structuring web pages."
+        </blockquote>
+
+        <!-- Used abbr to expand an abbreviation so readers understand what HTML stands for without leaving the page -->
+        <p>
+            <abbr title="HyperText Markup Language">HTML</abbr> is the foundation of every web page.
+        </p>
+
+        <!-- Used mark to visually highlight the most important word in this sentence -->
+        <p>
+            Always remember to add <mark>alt text</mark> to every image for accessibility.
+        </p>
+
+        <!-- Used code and pre together to display a properly formatted, monospaced code snippet -->
+        <pre><code>git checkout -b hidalgo-gillian-act-2</code></pre>
+
+        <!-- Used an HTML character entity to correctly display a copyright symbol without breaking the markup -->
+        <p>&copy; 2026 Gillian Hidalgo. All rights reserved.</p>
+
+    </section>
+
+    <hr>
+
+    <!-- ============================= -->
+    <!-- 5. HTML DOM SECTION -->
+    <!-- ============================= -->
+    <section id="dom-section">
+        <h2>HTML DOM</h2>
+
+        <p>
+            The HTML DOM (Document Object Model) represents this page as a tree of nested elements.
+            For example, this &lt;section&gt; is the parent of the heading and paragraphs inside it,
+            and the browser builds this structure automatically when it parses the HTML file.
+        </p>
+
+        <p id="dom-example-text">
+            This paragraph has an id attribute, so it can be selected individually in the DOM tree.
+        </p>
+
+        <img id="dom-example-image" src="images/photo1.jpg" alt="Example image referenced in DOM screenshot" width="200">
+
+        <h3>DOM Tree Screenshot</h3>
+        <img src="dom-tree.png" alt="Screenshot of the DOM tree shown in browser DevTools" width="500">
+
+    </section>
+
+    <footer>
+        <p>IT 110 - Web Development Fundamentals | Activity 2</p>
+    </footer>
+
+    <!--
+        DOM Parent-Child Explanation:
+        [Fill this in after inspecting your own page in DevTools. Example structure to guide you:]
+        In the DOM tree, the <body> element is the parent of every <section> on this page, including
+        #images-section, #hyperlinks-section, and #dom-section. Within #dom-section, the <h2> heading
+        and the paragraph with id="dom-example-text" are both direct children of the <section> element,
+        making them sibling nodes rather than parent-child to each other. The image with
+        id="dom-example-image" is also a child of #dom-section, placed after the paragraph in the DOM tree.
+        Similarly, inside the Images section, the <figcaption> is a child of its <figure> parent, not of
+        the <section> directly, showing how nesting groups related elements together under a shared parent.
+    -->
+
+</body>
+</html>
