@@ -1,0 +1,241 @@
+/* =========================================================
+   IT 110 - CSS Hands-On Activity: Style Your Profile Card
+   Name: Gillian Hidalgo
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION 1: RESET
+   ========================================================= */
+
+/* Universal selector: removes default spacing from every element.
+   box-sizing: border-box makes width INCLUDE padding and border. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   SECTION 2: BASE STYLES (type selectors)
+   ========================================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;                      /* rem unit */
+    line-height: 1.5;
+    color: #333333;                       /* hex color */
+    background-color: whitesmoke;         /* named color */
+}
+
+/* Grouping selector: one rule for both headings */
+h1, h2 {
+    font-weight: bold;
+    color: #1d3557;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+/* ::before pseudo-element: adds a decoration before every h2 */
+h2::before {
+    content: "\2605  ";                   /* star symbol */
+    color: #e63946;
+}
+
+
+/* =========================================================
+   SECTION 3: LAYOUT (header, main, footer)
+   ========================================================= */
+
+header {
+    background-color: #1d3557;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;                   /* centers text in header */
+}
+
+header h1 {
+    color: white;
+}
+
+footer {
+    background-color: rgba(29, 53, 87, 0.15);   /* rgba color */
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;                   /* centers text in footer */
+}
+
+
+/* =========================================================
+   SECTION 4: NAVIGATION (Part D: inline-block + pseudo-class)
+   ========================================================= */
+
+/* inline-block lets the links keep their place in a row
+   AND accept width/height-style spacing (padding, margin). */
+nav a {
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 10px 5px 0;
+    background-color: #457b9d;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+/* :hover pseudo-class: changes the link while the mouse is over it */
+nav a:hover {
+    background-color: #e63946;
+}
+
+
+/* =========================================================
+   SECTION 5: COMPONENTS (.card and friends)
+   ========================================================= */
+
+/* CASCADE DEMO (Part A):
+   Two rules target the same element (.intro) and set the same
+   property (color). The SECOND rule below (.card p.intro) wins
+   because it has HIGHER SPECIFICITY (class + type + class vs.
+   a single class). Source order only decides when specificity
+   is equal, and here the specificity is not equal. */
+.intro {
+    color: #333333;                       /* loses */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.card p.intro {
+    color: rgb(230, 57, 70);              /* wins: rgb() color */
+}
+
+/* ::first-letter pseudo-element: enlarges the first letter */
+.intro::first-letter {
+    font-size: 1.6rem;
+}
+
+/* Descendant selector: every <p> anywhere inside a .card */
+.card p {
+    margin-bottom: 8px;
+}
+
+/* TOTAL RENDERED WIDTH of one .card:
+   Because of box-sizing: border-box, the width (500px) already
+   includes padding and border, so the card is exactly 500px wide.
+   (The content area is 500 - 20 - 20 - 2 - 2 = 456px.)
+   margin: 0 auto centers it; margin-bottom spaces the cards apart. */
+.card {
+    width: 500px;
+    padding: 20px;
+    border: 2px solid #1d3557;            /* width, style, color in one line */
+    border-radius: 10px;
+    background-color: white;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+/* ID selector: makes the About card stand out.
+   Specificity (1,0,0) beats .card (0,1,0), so the red border wins. */
+#about {
+    border-color: #e63946;
+    position: relative;                   /* reference point for the badge */
+}
+
+/* Badge in the top-right corner of #about.
+   position: absolute is measured from the nearest positioned
+   ancestor, which is #about because of position: relative. */
+#about::after {
+    content: "NEW";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 2px 8px;
+    background-color: #e63946;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+
+/* =========================================================
+   SECTION 6: SKILLS LIST (Part D: flexbox)
+   ========================================================= */
+
+/* display: flex puts the <li> items in a row;
+   gap adds space between them; justify-content centers the row. */
+.skills-list {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Child selector: only <li> that are DIRECT children of .skills-list.
+   Styled like small tags. */
+.skills-list > li {
+    list-style: none;
+    padding: 6px 14px;
+    background-color: #a8dadc;
+    border-radius: 20px;
+}
+
+
+/* =========================================================
+   SECTION 7: DISPLAY, VISIBILITY AND OVERFLOW
+   ========================================================= */
+
+.hide-none {
+    display: none;
+}
+
+.hide-visibility {
+    visibility: hidden;
+}
+
+/* VISIBLE DIFFERENCE between the two hidden paragraphs:
+   .hide-none (display: none) is removed from the layout completely,
+   so it takes up NO space and the paragraphs below move up.
+   .hide-visibility (visibility: hidden) is invisible, but it still
+   takes up its space, so an empty gap stays in the Notes card. */
+
+/* Fixed height + overflow: auto = a scrollbar appears when the
+   text is taller than the box. */
+.scroll-box {
+    height: 120px;
+    overflow: auto;
+}
+
+
+/* =========================================================
+   REFLECTION ANSWERS
+
+   1. Why did one of my two conflicting rules win in Part A?
+      The rule .card p.intro won over .intro because it has
+      higher specificity: it combines two classes and a type
+      selector, while .intro has only one class. The browser
+      checks specificity first, and source order only breaks a
+      tie when the specificity is equal.
+
+   2. What is the rendered width of one .card if box-sizing were
+      content-box?
+      With content-box, the width (500px) applies only to the
+      content, and padding and border are added on top:
+      500 + (20 + 20 padding) + (2 + 2 border) = 544px.
+      With border-box it stays 500px because the padding and
+      border are counted inside the width.
+
+   3. When would I choose visibility: hidden instead of
+      display: none?
+      I would use visibility: hidden when I want the element to
+      be invisible but still keep its space, so the layout does
+      not shift around when it is shown or hidden again. I would
+      use display: none when the element should be gone entirely
+      and the other content should fill its place.
+   ========================================================= */
