@@ -1,0 +1,281 @@
+/* =========================================================
+   IT 110 - Recreate the Page (upgrade of my Activity 3 profile card)
+   Name: Gillian Hidalgo
+   ========================================================= */
+
+/* ---------- Color variables (easy to change, and used for dark mode) ---------- */
+:root {
+    --nav-bg: #134e4a;
+    --page-bg: #f0fdfa;
+    --card-bg: #ffffff;
+    --text: #134e4a;
+    --muted: #5f7f7b;
+    --primary: #0d9488;
+    --tag-bg: #ccfbf1;
+    --tag-text: #115e59;
+    --accent: #5eead4;
+    --shadow: 0 12px 32px rgba(13, 148, 136, 0.22);
+}
+
+/* Dark theme: JS adds the class "dark" to <body> */
+body.dark {
+    --nav-bg: #042f2e;
+    --page-bg: #0b1f1e;
+    --card-bg: #123332;
+    --text: #e6fffb;
+    --muted: #8fb5b0;
+    --tag-bg: #115e59;
+    --tag-text: #99f6e4;
+    --shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+}
+
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    background-color: var(--page-bg);
+    color: var(--text);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ---------- Header / navigation ---------- */
+header {
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--nav-bg);
+    color: white;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #5eead4;
+}
+
+nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 22px;
+}
+
+.nav-link {
+    padding: 8px 4px 8px;
+    border-bottom: 3px solid transparent;
+    color: white;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    border-bottom-color: rgba(94, 234, 212, 0.5);
+}
+
+.nav-link.active {
+    border-bottom-color: var(--accent);
+}
+
+/* ---------- Dark mode switch ---------- */
+.theme-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.theme-switch input {
+    position: absolute;       /* hide the real checkbox, but keep it usable */
+    opacity: 0;
+}
+
+.slider {
+    position: relative;
+    width: 46px;
+    height: 24px;
+    border-radius: 12px;
+    background-color: #64748b;
+    transition: background-color 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: white;
+    transition: transform 0.3s;
+}
+
+.theme-switch input:checked + .slider {
+    background-color: var(--primary);
+}
+
+.theme-switch input:checked + .slider::before {
+    transform: translateX(22px);
+}
+
+.theme-switch input:focus-visible + .slider {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ---------- Main + profile card ---------- */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.card {
+    width: 420px;
+    padding: 36px 30px;
+    text-align: center;
+    background-color: var(--card-bg);
+    border-top: 5px solid var(--primary);
+    border-radius: 28px;
+    box-shadow: var(--shadow);
+    transition: background-color 0.3s;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: white;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.name {
+    margin-top: 16px;
+    font-size: 28px;
+    color: var(--text);
+}
+
+.intro {
+    margin-top: 6px;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+/* ---------- Skills list (flexbox + child selector, from Activity 3) ---------- */
+.skills-list {
+    margin-top: 21px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+}
+
+.skills-list > li {
+    padding: 6px 14px;
+    border-radius: 20px;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* ---------- Buttons ---------- */
+.actions {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 13px;
+}
+
+.btn {
+    height: 46px;
+    padding: 0 24px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0f766e;
+}
+
+.count {
+    padding: 1px 10px;
+    border-radius: 12px;
+    background-color: white;
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn-outline {
+    padding: 0 21px;
+    border: 2px solid var(--primary);
+    background-color: transparent;
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+body.dark .btn-outline {
+    color: #5eead4;
+    border-color: #2dd4bf;
+}
+
+body.dark .btn-outline:hover {
+    color: white;
+}
+
+/* ---------- Footer ---------- */
+footer {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusHub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Campus<span>Hub</span></a>
+
+        <nav aria-label="Main navigation">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#courses" class="nav-link">Courses</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <!-- NEW: dark mode switch (a real checkbox, styled as a switch) -->
+        <label class="theme-switch">
+            <span>Dark mode</span>
+            <input type="checkbox" id="themeToggle" role="switch">
+            <span class="slider"></span>
+        </label>
+    </header>
+
+    <main>
+        <section class="card" id="about">
+            <div class="avatar">GH</div>
+            <h1 class="name">Gillian Hidalgo</h1>
+            <p class="intro">BS Information Technology, 2nd Year</p>
+
+            <ul class="skills-list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <!-- NEW: the two buttons -->
+            <div class="actions">
+                <button type="button" class="btn btn-primary" id="likeBtn">&hearts; Like <span class="count" id="likeCount">24</span></button>
+                <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CampusHub. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
