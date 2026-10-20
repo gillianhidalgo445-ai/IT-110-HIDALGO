@@ -26,23 +26,51 @@
     </header>
 
     <main>
-        <section class="card" id="about">
-            <div class="avatar">GH</div>
-            <h1 class="name">Gillian Hidalgo</h1>
-            <p class="intro">BS Information Technology, 2nd Year</p>
+        <!-- HOME panel: the profile card from the target image (shown by default) -->
+        <div class="panel active" id="home">
+            <section class="card" id="about">
+                <div class="avatar">GH</div>
+                <h1 class="name">Gillian Hidalgo</h1>
+                <p class="intro">BS Information Technology, 2nd Year</p>
 
-            <ul class="skills-list">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-            </ul>
+                <ul class="skills-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
 
-            <!-- NEW: the two buttons -->
-            <div class="actions">
-                <button type="button" class="btn btn-primary" id="likeBtn">&hearts; Like <span class="count" id="likeCount">24</span></button>
-                <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
-            </div>
-        </section>
+                <!-- NEW: the two buttons -->
+                <div class="actions">
+                    <button type="button" class="btn btn-primary" id="likeBtn">&hearts; Like <span class="count" id="likeCount">24</span></button>
+                    <button type="button" class="btn btn-outline" id="resetBtn">Reset</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- COURSES panel -->
+        <div class="panel" id="courses">
+            <section class="card">
+                <h2>My Courses</h2>
+                <ul class="course-list">
+                    <li>IT 110 &ndash; Web Development Fundamentals</li>
+                    <li>Programming Fundamentals</li>
+                    <li>Computer Fundamentals</li>
+                </ul>
+            </section>
+        </div>
+
+        <!-- CONTACT panel -->
+        <div class="panel" id="contact">
+            <section class="card">
+                <h2>Contact Me</h2>
+                <form id="contactForm">
+                    <input type="text" id="contactName" placeholder="Your name" required autocomplete="off">
+                    <textarea id="contactMsg" placeholder="Your message" rows="3" required></textarea>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+                <p id="contactStatus" class="status"></p>
+            </section>
+        </div>
     </main>
 
     <footer>

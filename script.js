@@ -52,12 +52,32 @@ if (localStorage.getItem("theme") === "dark") {
 }
 
 
-/* ---------- 5. Nav links: the clicked link gets the underline ---------- */
+/* ---------- 5. Nav links: underline + show the matching panel ---------- */
+const panels = document.querySelectorAll(".panel");
+
 navLinks.forEach((link) => {
     link.addEventListener("click", (event) => {
         event.preventDefault();               // single page, so don't jump around
 
+        // underline moves to the clicked link
         navLinks.forEach((l) => l.classList.remove("active"));
         link.classList.add("active");
+
+        // href is "#courses", so slice(1) gives the panel id "courses"
+        const target = link.getAttribute("href").slice(1);
+        panels.forEach((p) => p.classList.toggle("active", p.id === target));
     });
+});
+
+
+/* ---------- 6. Contact form: show a thank-you message ---------- */
+const contactForm   = document.querySelector("#contactForm");
+const contactName   = document.querySelector("#contactName");
+const contactStatus = document.querySelector("#contactStatus");
+
+contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();                   // don't reload the page
+    // textContent (not innerHTML) so typed text can never run as code
+    contactStatus.textContent = "Thanks, " + contactName.value.trim() + "! Message sent.";
+    contactForm.reset();
 });
